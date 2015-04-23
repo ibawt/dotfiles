@@ -1,0 +1,11 @@
+[user]
+	name = Ian Quick
+	email = ian.quick@gmail.com
+[push]
+	default = simple
+[pull]
+	rebase = true
+[github]
+	user = ibawt
+[color]
+	ui = true
