@@ -48,6 +48,7 @@
   "Initialization function.
 This function is called at the very startup of Spacemacs initialization
 before layers configuration."
+
   ;; This setq-default sexp is an exhaustive list of all the supported
   ;; spacemacs settings.
   (setq-default
