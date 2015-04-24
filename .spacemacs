@@ -151,9 +151,7 @@ before layers configuration."
   (setq-default
    git-enable-github-support t
    git-magit-status-fullscreen t
-   magit-repo-dirs '("~/devel" "~/src"))
-  )
-
+   magit-repo-dirs '("~/devel" "~/src"))) 
 (defun dotspacemacs/config ()
   "Configuration function.
  This function is called at the very end of Spacemacs initialization after
