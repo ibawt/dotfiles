@@ -11,3 +11,4 @@ if [ ! -d ~/.oh-my-zsh ] ; then
 fi
 ln -sf $PWD/.gitconfig ~/.gitconfig
 cat aliases.sh >> ~/.zshrc
+ln -sf $PWD/.zshrc ~/.zshrc
