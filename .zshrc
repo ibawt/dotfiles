@@ -2,7 +2,7 @@
 export ZSH=$HOME/.oh-my-zsh
 
 is_osx() {
-    [ "$(uname)" == "Darwin" ]
+    uname == "Darwin" 
 }
 
 # Set name of the theme to load.
