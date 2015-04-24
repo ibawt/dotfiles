@@ -2,7 +2,7 @@
 export ZSH=$HOME/.oh-my-zsh
 
 is_osx() {
-    uname == "Darwin" 
+    $(uname) == "Darwin" 
 }
 
 # Set name of the theme to load.
@@ -50,8 +50,10 @@ ZSH_THEME="robbyrussell"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 if [ is_osx ] ; then
+    echo "OSX"
     plugins=(gitfast rbenv ruby osx)
 else
+    echo "Linux"
     plugins=(gitfast chruby ruby)
 fi
 # User configuration
