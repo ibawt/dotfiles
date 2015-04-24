@@ -10,3 +10,4 @@ if [ ! -d ~/.oh-my-zsh ] ; then
 	curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
 fi
 ln -sf $PWD/.gitconfig ~/.gitconfig
+cat aliases.sh >> ~/.zshrc
