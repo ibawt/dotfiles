@@ -1,9 +1,6 @@
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
-is_osx() {
-    $(uname) == "Darwin" 
-}
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -49,12 +46,13 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-if [ is_osx ] ; then
-    echo "OSX"
-    plugins=(gitfast rbenv ruby osx)
+function is_osx {
+    [ `uname` = "Darwin" ]
+}
+if [ ! is_osx ] ; then
+    plugins=(gitfast rbenv ruby osx rails)
 else
-    echo "Linux"
-    plugins=(gitfast chruby ruby)
+    plugins=(gitfast ruby rails)
 fi
 # User configuration
 
@@ -62,7 +60,8 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
-
+export ALTERNATE_EDITOR=emacs EDITOR=emacsclient VISUAL=emacsclient
+export EDITOR='emacsclient -c'
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
