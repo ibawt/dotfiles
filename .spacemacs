@@ -86,6 +86,7 @@ before layers configuration."
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
+   dotspacemacs-mode-line-unicode-symbols nil
    ;; The leader key
    dotspacemacs-leader-key "SPC"
    ;; The leader key accessible in `emacs state' and `insert state'
@@ -147,6 +148,10 @@ before layers configuration."
    dotspacemacs-default-package-repository nil
    )
   ;; User initialization goes here
+  (setq-default
+   git-enable-github-support t
+   git-magit-status-fullscreen t
+   magit-repo-dirs '("~/devel" "~/src"))
   )
 
 (defun dotspacemacs/config ()
