@@ -1,6 +1,6 @@
 #!/bin/sh
 set -e
-ln -sf ~/.spacemacs ./spacemacs
+ln -sf $PWD/.spacemacs ~/.spacemacs
 if [ ! -d ~/.emacs.d ] ; then 
 	git clone --recursive http://github.com/syl20bnr/spacemacs ~/.emacs.d
 fi
