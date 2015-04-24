@@ -1,6 +1,7 @@
 [user]
 	name = Ian Quick
 	email = ian.quick@gmail.com
+	signingkey = 9961F477
 [push]
 	default = simple
 [pull]
@@ -9,3 +10,5 @@
 	user = ibawt
 [color]
 	ui = true
+[commit]
+	sign = true
