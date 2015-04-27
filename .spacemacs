@@ -24,6 +24,7 @@
      syntax-checking
      org
      erc
+     javascript
      themes-megapack
      ;; --------------------------------------------------------
      ;; Example of useful layers you may want to use right away
