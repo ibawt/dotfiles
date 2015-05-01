@@ -32,6 +32,12 @@ which require an initialization must be listed explicitly in the list.")
 (defvar rust-excluded-packages '()
   "List of packages to exclude.")
 
+(add-hook 'rust-mode-hook
+          (lambda ()
+            (smartparens-mode -1)
+            (sp-pair "'" nil :actions :rem)))
+
+
 ;; For each package, define a function rust/init-<package-rust>
 ;;
 ;; (defun rust/init-my-package ()
