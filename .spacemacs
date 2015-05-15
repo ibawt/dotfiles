@@ -163,7 +163,16 @@ layers configuration."
   (setq powerline-default-separator 'arrow)
   (add-to-list 'load-path "~/.emacs.d/private")
   (require 'secrets)
+  (require 'erc)
+  (setq erc-keywords '("ibawt" "ian" "Ian"))
+  (setq erc-hide-list '("MODE" "JOIN" "PART" "QUIT" "VOICE"))
 )
+
+(defun start-irc ()
+  "Connect to slack"
+  (interactive)
+  (erc-tls :server "shopify.irc.slack.com" :port 6697
+           :password slack-token :nick "ibawt" :full-name "Ian Quick"))
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
