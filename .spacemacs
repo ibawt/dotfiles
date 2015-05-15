@@ -24,6 +24,7 @@
      syntax-checking
      org
      erc
+     clojure
      javascript
      themes-megapack
      ;; --------------------------------------------------------
@@ -160,6 +161,8 @@ before layers configuration."
 layers configuration."
   (global-company-mode)
   (setq powerline-default-separator 'arrow)
+  (add-to-list 'load-path "~/.emacs.d/private")
+  (require 'secrets)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will

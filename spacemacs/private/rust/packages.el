@@ -34,9 +34,16 @@ which require an initialization must be listed explicitly in the list.")
 
 (add-hook 'rust-mode-hook
           (lambda ()
-            (smartparens-mode -1)
-            (sp-pair "'" nil :actions :rem)))
+            (smartparens-mode -1)))
 
+(setq racer-rust-src-path "~/devel/rust/src/")
+(setq racer-cmd "~/devel/racer/target/release/racer")
+(add-to-list 'load-path "~/devel/racer/editors")
+(eval-after-load "rust-mode" '(require 'racer))
+
+(when (configuration-layer/layer-usedp 'auto-completion)
+  (defun rust/post-init-company ()
+    (spacemacs|add-company-hook rust-mode)))
 
 ;; For each package, define a function rust/init-<package-rust>
 ;;
