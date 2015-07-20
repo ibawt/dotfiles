@@ -20,7 +20,9 @@
      lua
      go
      git
+     version-control
      markdown
+     (shell :variables shell-default-shell 'multi-term)
      syntax-checking
      org
      erc
