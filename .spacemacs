@@ -12,6 +12,7 @@
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
    '(
+     slime
      auto-completion
      better-defaults
      rust
@@ -162,13 +163,29 @@ before layers configuration."
  This function is called at the very end of Spacemacs initialization after
 layers configuration."
   (global-company-mode)
-  (setq powerline-default-separator 'arrow)
-  (add-to-list 'load-path "~/.emacs.d/private")
+  (add-to-load-path "~/devel/dotfiles/spacemacs/private")
   (require 'secrets)
   (require 'erc)
   (setq erc-keywords '("ibawt" "ian" "Ian"))
   (setq erc-hide-list '("MODE" "JOIN" "PART" "QUIT" "VOICE"))
-)
+  (if (equal system-type 'darwin)
+      (progn
+        (require 'mu4e)
+        (setq mu4e-maildir "/Users/ianquick/.mail/shopify")
+        (setq mu4e-drafts-folder "/[Gmail].Drafts")
+        (setq mu4e-sent-folder "/[Gmail].Sent Mail")
+        (setq mu4e-trash-folder "/[Gmail].Trash")
+        (setq mu4e-sent-messages-behavior 'delete)
+        (setq mu4e-get-mail-command "~/bin/syncmail")
+        (setq user-mail-address "ian.quick@shopify.com"
+              user-full-name "Ian Quick"
+              mu4e-compose-signature (concat "Ian Quick\n" "Sent From Emacs"))
+        (require 'smtpmail)
+        (setq send-mail-function 'smtpmail-send-it
+              smtpmail-stream-type 'starttls
+              smtpmail-default-smtp-server "smtp.gmail.com"
+              smtpmail-smtp-server "smtp.gmail.com"
+              smtpmail-smtp-service 587))))
 
 (defun start-irc ()
   "Connect to slack"
@@ -176,8 +193,6 @@ layers configuration."
   (erc-tls :server "shopify.irc.slack.com" :port 6697
            :password slack-token :nick "ibawt" :full-name "Ian Quick"))
 
-;; Do not write anything past this comment. This is where Emacs will
-;; auto-generate custom variable definitions.
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -188,10 +203,9 @@ layers configuration."
  '(ahs-idle-interval 0.25)
  '(ahs-idle-timer 0 t)
  '(ahs-inhibit-face-list nil)
- '(custom-safe-themes
-   (quote
-    ("06f0b439b62164c6f8f84fdda32b62fb50b6d00e8b01c2208e55543a6337433a" default)))
- '(dired-use-ls-dired nil)
+ '(mu4e-auto-retrieve-keys t)
+ '(mu4e-get-mail-command "~/bin/syncmail")
+ '(mu4e-use-fancy-chars t)
  '(ring-bell-function (quote ignore) t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
