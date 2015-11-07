@@ -10,13 +10,13 @@
 ;;
 ;;; License: GPLv3
 
-(defvar rust-pre-extensions
+(defvar racket-geiser-pre-extensions
   '(
     ;; pre extension rusts go here
     )
   "List of all extensions to load before the packages.")
 
-(defvar rust-post-extensions
+(defvar racket-geiser-post-extensions
   '(
     ;; post extension rusts go here
     )
@@ -24,7 +24,7 @@
 
 ;; For each extension, define a function rust/init-<extension-rust>
 ;;
-(defun rust/init-my-extension ()
+(defun racket-geiser/init-my-extension ()
    "Initialize my extension"
  )
 ;;

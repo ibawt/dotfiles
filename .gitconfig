@@ -10,5 +10,3 @@
 	user = ibawt
 [color]
 	ui = true
-[commit]
-	gpgsign = true

@@ -7,16 +7,19 @@
   (setq-default
    ;; List of additional paths where to look for configuration layers.
    ;; Paths must have a trailing slash (ie. `~/.mycontribs/')
-   dotspacemacs-configuration-layer-path '()
+   dotspacemacs-configuration-layer-path (list (expand-file-name "~/devel/dotfiles/spacemacs"))
    ;; List of configuration layers to load. If it is the symbol `all' instead
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
    '(
-     slime
+     yaml
+     common-lisp
+     racket-geiser
      auto-completion
      better-defaults
-     rust
+     (rust :rust-enable-racer t)
      go
+     org
      ruby
      lua
      go
@@ -25,7 +28,6 @@
      markdown
      (shell :variables shell-default-shell 'multi-term)
      syntax-checking
-     org
      erc
      clojure
      javascript
@@ -59,7 +61,7 @@ before layers configuration."
   (setq-default
    ;; Either `vim' or `emacs'. Evil is always enabled but if the variable
    ;; is `emacs' then the `holy-mode' is enabled at startup.
-   dotspacemacs-editing-style 'vim
+   dotspacemacs-editing-style 'hybrid
    ;; If non nil output loading progess in `*Messages*' buffer.
    dotspacemacs-verbose-loading nil
    ;; Specify the startup banner. Default value is `official', it displays
@@ -68,7 +70,7 @@ before layers configuration."
    ;; directory. A string value must be a path to a .PNG file.
    ;; If the value is nil then no banner is displayed.
    ;; dotspacemacs-startup-banner 'official
-   dotspacemacs-startup-banner 'official
+   dotspacemacs-startup-banner nil
    ;; t if you always want to see the changelog at startup
    dotspacemacs-always-show-changelog t
    ;; List of items to show in the startup buffer. If nil it is disabled.
@@ -88,11 +90,11 @@ before layers configuration."
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
    dotspacemacs-default-font '("Source Code Pro"
-                               :size 15
+                               :size 14
                                :weight normal
                                :width normal
-                               :powerline-scale 1.1)
-   dotspacemacs-mode-line-unicode-symbols nil
+                               :powerline-scale 1.0)
+   dotspacemacs-mode-line-unicode-symbols t
    ;; The leader key
    dotspacemacs-leader-key "SPC"
    ;; The leader key accessible in `emacs state' and `insert state'
@@ -122,7 +124,7 @@ before layers configuration."
    dotspacemacs-fullscreen-at-startup nil
    ;; If non nil `spacemacs/toggle-fullscreen' will not use native fullscreen.
    ;; Use to disable fullscreen animations in OSX."
-   dotspacemacs-fullscreen-use-non-native nil
+   dotspacemacs-fullscreen-use-non-native t
    ;; If non nil the frame is maximized when Emacs starts up.
    ;; Takes effect only if `dotspacemacs-fullscreen-at-startup' is nil.
    ;; (Emacs 24.4+ only)
@@ -151,6 +153,7 @@ before layers configuration."
    ;; The default package repository used if no explicit repository has been
    ;; specified with an installed package.
    ;; Not used for now.
+   dotspacemacs-highlight-delimiters nil
    dotspacemacs-default-package-repository nil
    )
   ;; User initialization goes here
@@ -171,6 +174,7 @@ layers configuration."
   (if (equal system-type 'darwin)
       (progn
         (require 'mu4e)
+        (setenv "RUST_SRC_PATH" (expand-file-name "~/devel/rust/src"))
         (setq mu4e-maildir "/Users/ianquick/.mail/shopify")
         (setq mu4e-drafts-folder "/[Gmail].Drafts")
         (setq mu4e-sent-folder "/[Gmail].Sent Mail")
@@ -203,9 +207,11 @@ layers configuration."
  '(ahs-idle-interval 0.25)
  '(ahs-idle-timer 0 t)
  '(ahs-inhibit-face-list nil)
+ '(mac-option-modifier (quote (:ordinary super :mouse alt)))
  '(mu4e-auto-retrieve-keys t)
  '(mu4e-get-mail-command "~/bin/syncmail")
  '(mu4e-use-fancy-chars t)
+ '(paradox-github-token t)
  '(ring-bell-function (quote ignore) t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

@@ -10,42 +10,27 @@
 ;;
 ;;; License: GPLv3
 
-(defvar rust-packages
+(defvar racket-geiser-packages
   '(
-    rust-mode
-    flycheck-rust
-    toml-mode
+    geiser
     )
   "List of all packages to install and/or initialize. Built-in packages
 which require an initialization must be listed explicitly in the list.")
 
-(defun rust/init-rust-mode ()
-  (use-package rust-mode
-    :defer t
-    ))
-(defun rust/init-flycheck-rust ()
-  (use-package flycheck-rust))
+(defun racket-geiser/init-geiser ()
+  (use-package geiser))
 
-(defun rust/init-toml-mode ()
-  (use-package toml-mode))
+(defun racket-geiser/post-init-company()
+  (add-hook 'scheme-mode-hook 'company-mode))
 
-(defvar rust-excluded-packages '()
+(defvar racket-geiser-excluded-packages '()
   "List of packages to exclude.")
 
-(add-hook 'rust-mode-hook
-          (lambda ()
-            (smartparens-mode -1)))
-
-(setq racer-rust-src-path "~/devel/rust/src/")
-(setq racer-cmd "~/devel/racer/target/release/racer")
-(add-to-list 'load-path "~/devel/racer/editors")
-(eval-after-load "rust-mode" '(require 'racer))
-
 (when (configuration-layer/layer-usedp 'auto-completion)
-  (defun rust/post-init-company ()
-    (spacemacs|add-company-hook rust-mode)))
+  (defun racket-geiser/post-init-company ()
+    (spacemacs|add-company-hook racket-mode)))
 
-;; For each package, define a function rust/init-<package-rust>
+;; For each package, define a function racket-geiser/init-<package-rust>
 ;;
 ;; (defun rust/init-my-package ()
 ;;   "Initialize my package"
