@@ -4,6 +4,7 @@ export ZSH=$HOME/.oh-my-zsh
 if type rbenv 2>&1 > /dev/null ; then
     eval "$(rbenv init -)"
 fi
+export RUST_SRC_PATH="$HOME/devel/rust/src"
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
