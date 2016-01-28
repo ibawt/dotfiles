@@ -4,12 +4,9 @@ export ZSH=$HOME/.oh-my-zsh
 if type rbenv 2>&1 > /dev/null ; then
     eval "$(rbenv init -)"
 fi
-<<<<<<< 00f2ef6b11b0fdfe2c06d9630b3c24762027a204
 export RUST_SRC_PATH="$HOME/devel/rust/src"
 
-=======
 source ~/.profile
->>>>>>> .tmux.conf
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
