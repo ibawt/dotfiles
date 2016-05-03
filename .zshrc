@@ -1,9 +1,9 @@
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
-if type rbenv 2>&1 > /dev/null ; then
-    eval "$(rbenv init -)"
-fi
+#if type rbenv 2>&1 > /dev/null ; then
+#    eval "$(rbenv init -)"
+#fi
 export RUST_SRC_PATH="$HOME/devel/rust/src"
 
 source ~/.profile
@@ -55,18 +55,15 @@ function is_osx {
     [ `uname` = "Darwin" ]
 }
 if [ ! is_osx ] ; then
-    plugins=(gitfast rbenv ruby osx rails)
+    plugins=(rbenv osx rails)
 else
-    plugins=(gitfast ruby rails)
+    plugins=(rbenv ruby rails)
 fi
 # User configuration
 
-export PATH=$HOME/bin:/usr/local/bin:$PATH
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
-export ALTERNATE_EDITOR=emacs EDITOR=emacsclient VISUAL=emacsclient
-export EDITOR='emacsclient -c'
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
@@ -102,3 +99,16 @@ export ZSH_THEME_GIT_PROMPT_PREFIX="git:(%{$fg[red]%}"
 export ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
 export ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[blue]%}) %{$fg[yellow]%}✗%{$reset_color%}"
 export ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"
+
+source /usr/local/share/chruby/chruby.sh
+[ -f /opt/dev/dev.sh ] && source /opt/dev/dev.sh
+
+
+chruby 2.1.8
+export PATH=/usr/local/bin:$PATH
+
+# The next line updates PATH for the Google Cloud SDK.
+source '/Users/ian/google-cloud-sdk/path.zsh.inc'
+
+# The next line enables shell command completion for gcloud.
+source '/Users/ian/google-cloud-sdk/completion.zsh.inc'
